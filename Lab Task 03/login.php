@@ -11,11 +11,10 @@
 	<?php
 		$handle = fopen("data.json", "r");
 		$data = fread($handle, filesize("data.json"));
-		var_dump($data);
+		
 		echo "<hr>";
 
 		$exploded = explode("\n", $data);
-		var_dump($exploded);
 		echo "<hr>";
 		$arr1 = array();
 		for ($i =0; $i < count($exploded); $i++){
@@ -54,10 +53,12 @@
 	<?php
 		if ($_SERVER['REQUEST_METHOD'] === "GET" & count($_REQUEST) >0) {
 			for ($k = 0; $k < count($arr1) -1; $k++){
-				if ($arr1[$k]->name === $_GET['name'] ){
+				if ($arr1[$k]->name === $_GET['name'] and $arr1[$k]->pass === $_GET['pass'] ){
 					header("Location: Success.php");
+
 				
 			}
+			
 		}
 	}
 
