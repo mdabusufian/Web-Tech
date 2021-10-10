@@ -25,30 +25,29 @@
 		Last Name: * <input type="text" name="lastname" value="">
 		<br><br>
 
-	    Choose your Gender : *
-	    <input type="radio" name="gender" value="male" value="">
-	    Male
-	    <input type="radio" name="gender" value="female">
-	    Female
-	    <input type="radio" name="gender" value="other">
-	    Other
+	   Choose your Gender : *
+    <input type="radio" name="gender" value="male"  required >
+    Male
+    <input type="radio" name="gender" value="female">
+    Female
+    <input type="radio" name="gender" value="other">
+    Other
+   <br><br>
+
+
+
+
+		Date of birth: * <input type="date" name = "dob" >
 		<br><br>
 
-
-
-
-		Date of birth: * <input type="date" id="dob" >
-		<br><br>
-
-		Religion: * <select name=religion id="religion" value=""> 
-	    <option value= >Please Select</option>
-		<option value= >Muslims</option>
-		<option value= >Hindus</option>
-		<option value= >Buddhists</option>
-		<option value= >Christians</option>
-		<option value= >Others</option>
-		</select>
-		<br><br>
+        Religion *
+		 <select name="rel" id="rel" >
+    <option value="">None</option>
+    <option value="islam">Islam</option>
+    <option value="hindu">Hindu</option>
+    <option value="boddho">Boddho</option>
+    <option value="chris">Christian</option>
+  </select>
 
 
 	</fieldset>
@@ -58,19 +57,19 @@
 				<legend>Contact Information</legend>
 				<br>
 
-		Present Address: *<input type="text" id="psaddress" value="">
+		Present Address: *<input type="text" name ="add" value="">
 		<br><br>
 
-	    Permanent Address: * <input type="text" id="pmaddress" value="">
+	    Permanent Address: * <input type="text" name="padd" value="">
 		<br><br>
 
-	    Phone Number: <input type="tel" id="phone" value="">
+	    Phone Number: <input type="tel" name ="phn" value="">
 		<br><br>
 
-		Email: * <input type="email" id="mail">
+		Email: * <input type="email" name ="mail">
 		<br><br>
 
-		Personal Website Link: <input type="url" name="Personal Website" id="perweb" value="">
+		Personal Website Link: <input type="url" name="prlink" value="">
 		<br><br>
 
 
@@ -82,17 +81,17 @@
 				<legend>Account Information</legend>
 				<br>
 
-		Username: * <input type="text" name="uname" id="uname" value="">
+		Username: * <input type="text" name="name"  value="">
 		<br><br>
 
-	    Password: * <input type="password" name="password" id="pass" value="">
+	    Password: * <input type="password" name="pass"  value="">
 		<br><br>
 	
 
     </fieldset>
     <br>
 	
-	<input type="submit" name="submit">
+	<input type="submit" name="Submit">
 	</form>
 	<br><br>
 
@@ -103,47 +102,36 @@
 		echo "<br>";
 		echo "<br>";
 
-		echo "METHOD: " . $_SERVER['REQUEST_METHOD'];
-		echo "<br>";
-		echo "<br>";
-
-	var_dump($_POST);
-	echo "<br>";
-		echo "<br>";
 
 		if ($_SERVER['REQUEST_METHOD'] === "POST") 
 	{
 
-			$firstname = $_POST['firstname'];
-			$lastname = $_POST['lastname'];
-			$gender = $_POST['gender'];
-			$dateofbirth = $_POST['dob'];
-			$religion = $_POST['religion'];
-			$psadd = $_POST['psaddress'];
-			$pmadd = $_POST['pmaddress'];
-			$pno = $_POST['phone'];
-			$email = $_POST['mail'];
-			$pweb = $_POST['perweb'];
-			$username = $_POST['uname'];
-			$password = $_POST['pass'];
+		$fname = $_POST['firstname'];
+		$lname = $_POST['lastname'];
+		$dob = $_POST['dob'];
+		$gender = $_POST['gender'];
+		$rel = $_POST['rel'];
+		$add = $_POST['add'];
+		$padd = $_POST['padd'];
+		$mail = $_POST['mail'];
+		$phn = $_POST['phn'];
+		$prlink = $_POST['prlink'];
+		$name = $_POST['name'];
+		$pass = $_POST['pass'];
 
 
-
-		if (empty($firstname) || empty($lastname) || empty($gender) || empty($dateofbirth) || empty($religion) || empty($psadd) || empty($pmadd) || empty($pno) || empty($email) || empty($pweb) || empty($username) || empty($password) ) 
-		{
-			echo "Please fill up the form properly";
+		if (empty($fname) || empty($lname) || empty($dob) || empty($gender) || empty($rel) || empty($padd) || empty($add) || empty($mail) || empty($phn) || empty('username') || empty('$pass'))
+			{
+				echo "Please fill up the form properly";
 		}
 
 		else 
 		{
-			echo "Thank You ";
-			echo "<br>";
+			echo "Registration Successful";
 			echo "<br>";
 
 		}
 	}
-
-
 
 function sanitize($data) {
 $data = trim($data);
@@ -154,7 +142,3 @@ return $data;
 ?>
 </body>
 </html>
-
-
-
-         
